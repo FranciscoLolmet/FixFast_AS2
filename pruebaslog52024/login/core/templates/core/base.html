@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Desk</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    {% if request.user.is_authenticated %}
+    <h2>FIXFAST</h2>
+    <h2>Help Desk</h2>
+    {% endif  %}
+    <ul>
+        {% if request.user.is_authenticated %}
+        <li><a href={% url 'home' %}>Inicio</a></li>
+        <li><a href={% url 'products' %}>Dashboard</a></li>
+ 
+        
+        {% endif  %}
+        {% if request.user.is_authenticated %}
+            <li><a href={% url 'exit' %}>Salir</a></li>
+  
+        {% endif  %}
+    </ul>
+        {% block content %}
+        <li><a href={% url 'login' %}>ingresar</a></li>
+        {% endblock %}     
+</body>
+</html>

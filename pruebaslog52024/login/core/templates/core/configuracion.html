@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Dark Mode</title>
+    <style>
+        /* Estilos para el modo claro */
+        body.light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        /* Estilos para el modo oscuro */
+        body.dark-mode {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+
+        /* Estilos para el botón */
+        .toggle-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <button class="toggle-button" onclick="toggleMode()">Toggle Dark Mode</button>
+
+    <h1>Welcome to My Website</h1>
+    <p>This is some sample text.</p>
+
+    <script>
+        // Función para alternar entre el modo claro y oscuro
+        function toggleMode() {
+            var body = document.body;
+            // Alternar entre las clases de modo claro y oscuro en el cuerpo del documento
+            body.classList.toggle("light-mode");
+            body.classList.toggle("dark-mode");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/alltickets.css">
+    <title>All Tickets</title>
+</head>
+<body>
+
+    <li><a href={% url 'home' %}>Inicio</a></li>
+{% for ticket in tickets %}
+
+<div class="card">
+    <div class="card-header">
+      <div class="ticket-id">Ticket No. {{ticket.id}}</div>
+      <div class="ticket-status">{{ticket.status}}</div>
+    </div>
+    <div class="card-content">
+      <div class="ticket-title">Titulo: {{ ticket.title }}</div>
+      <div class="ticket-description">Descripcion del ticket: <br>{{ ticket.description }}</div>
+    </div>
+    <div class="card-footer">
+      <div class="ticket-assigned-to">Assigned to: {{ ticket.asignar }}</div>
+      <div class="ticket-due-date">Due date: {{ ticket.due_date }}</div>
+    </div>
+    <div class="card-footer">
+      <div class="ticket-assigned-to">Prioridad: {{ ticket.priority }}</div>
+      <div class="ticket-due-date">categoria:  {{ ticket.categorias }}</div>
+    </div>
+</div>
+<form action="{% url 'cerrar_ticket' ticket.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Cerrar Ticket</button>
+    <br>
+    <br>
+</form>
+
+<!-- <div class="form-group">
+  <label for="priority">Priority:</label>
+  <select id="priority" name="priority" required>
+      <option value="low">Baja</option>
+      <option value="medium">Medio</option>
+      <option value="high">Alta</option>
+  </select>
+</div> -->
+
+{% endfor %}
+
+<!-- {% for ticket in tickets %}
+    {% if not ticket.closed %}
+        <!-- Código para mostrar el ticket aquí -->
+      
+        <!-- Otros detalles del ticket -->
+    {% endif %}
+{% endfor %} -->
+    
+</body>
+</html>

@@ -1,0 +1,130 @@
+$color-principal: linear-gradient(to right, rgb(177, 36, 36), rgb(0, 0, 0));
+$color-letra: #000000;
+$fuente: Arial, sans-serif;
+body{
+    
+    background: $color-principal;
+    font-family: $fuente;
+}
+
+  // Estilos para el elemento <h3>
+h3 {
+  text-align: center; // Centra el texto
+  font-size: 20px; // Tamaño de la fuente
+  margin-bottom: 10px; // Espaciado inferior
+}
+
+// Estilos para el formulario
+form {
+  text-align: center; // Centra el contenido del formulario
+}
+
+// Estilos para los elementos de entrada dentro del formulario
+form input {
+  display: block; // Convierte los campos de entrada en bloques para que aparezcan uno debajo del otro
+  margin: 0 auto 10px; // Alinea al centro y agrega un margen inferior
+  padding: 8px; // Añade relleno
+  width: 200px; // Establece el ancho del campo de entrada
+}
+
+// Estilos para el botón de envío dentro del formulario
+form button {
+  display: block; // Convierte el botón en un bloque para que ocupe todo el ancho disponible
+  margin: 0 auto 10px; // Alinea al centro y agrega un margen inferior
+  padding: 10px 20px; // Añade relleno
+  background-color: #000; // Cambia el color de fondo
+  color: #fff; // Cambia el color del texto
+  border: none; // Quita el borde
+  border-radius: 5px; // Añade bordes redondeados
+  cursor: pointer; // Cambia el cursor al pasar el ratón
+}
+
+// Estilos para el botón de envío cuando está en estado hover
+form button:hover {
+  background-color: #333; // Cambia el color de fondo al pasar el ratón
+}
+
+  $color-principal: linear-gradient(to right, rgb(17, 66, 139), rgba(21, 221, 171, 0.89));
+$color-letra: #000000;
+$fuente: Arial, sans-serif;
+body{
+    background: $color-principal;
+    font-family: $fuente;
+}
+
+  
+// Estilos para los elementos <li>
+ul {
+  display: flex;  /* Utiliza flexbox */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  flex-wrap: wrap; /* Envuelve los elementos cuando no caben en una sola línea */
+}
+
+li {
+  list-style: none; /* Quita los estilos de viñeta predeterminados */
+  text-align: center; /* Centra el contenido */
+  margin-bottom: 5px; /* Espaciado inferior */
+  margin-right: 10px; /* Espaciado derecho entre elementos */
+}
+
+li a {
+  display: inline-block; /* Convierte el enlace en un bloque en línea para controlar el ancho */
+  padding: 15px 20px; /* Añade relleno para hacer más grande el área de clic */
+  text-decoration: none; /* Quita el subrayado de los enlaces */
+  border: 2px solid #801d1d; /* Añade un borde sólido */
+  border-radius: 5px; /* Añade bordes redondeados */
+  color: #000; /* Cambia el color del texto */
+}
+
+li a:hover {
+  background-color: #830e0e; /* Cambia el color de fondo al pasar el ratón */
+  color: #fff; /* Cambia el color del texto al pasar el ratón */
+}
+
+
+    // Estilos para el título
+// Estilos para el elemento <h2>
+h2 {
+  text-align: center; // Centra el texto
+  font-size: 30px; // Tamaño de la fuente
+  margin-bottom: 10px; // Espaciado inferior
+}
+
+-------------------------
+// Estilos para el elemento <h3>
+h3 {
+  text-align: center; // Centra el texto
+  font-size: 20px; // Tamaño de la fuente
+  margin-bottom: 10px; // Espaciado inferior
+}
+
+// Estilos para el formulario
+form {
+  text-align: center; // Centra el contenido del formulario
+}
+
+// Estilos para los elementos de entrada dentro del formulario
+form input {
+  display: block; // Convierte los campos de entrada en bloques para que aparezcan uno debajo del otro
+  margin: 0 auto 10px; // Alinea al centro y agrega un margen inferior
+  padding: 8px; // Añade relleno
+  width: 200px; // Establece el ancho del campo de entrada
+}
+
+// Estilos para el botón de envío dentro del formulario
+form button {
+  display: block; // Convierte el botón en un bloque para que ocupe todo el ancho disponible
+  margin: 0 auto 10px; // Alinea al centro y agrega un margen inferior
+  padding: 10px 20px; // Añade relleno
+  background-color: #000000; // Cambia el color de fondo
+  color: #fff; // Cambia el color del texto
+  border: none; // Quita el borde
+  border-radius: 5px; // Añade bordes redondeados
+  cursor: pointer; // Cambia el cursor al pasar el ratón
+}
+
+// Estilos para el botón de envío cuando está en estado hover
+form button:hover {
+  background-color: #333; // Cambia el color de fondo al pasar el ratón
+}
+

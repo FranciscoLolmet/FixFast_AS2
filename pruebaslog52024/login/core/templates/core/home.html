@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixFast</title>
+</head>
+<body>
+    
+</body>
+</html>
+{% block content %}
+
+<h3>Inicio</h3>
+<a href={% url 'login' %}>ingresar</a>
+{% if request.user.is_authenticated %}
+    <hr>
+
+    <h4>
+       {{ user.username | upper }}, Bienvenido
+    </h4>
+    {% endif %}
+
+{% endblock %}

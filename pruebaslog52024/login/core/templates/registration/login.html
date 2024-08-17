@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+{% block extra_css %}
+
+<link rel="stylesheet" type="text/css" href={% static 'css/style_login.css' %} />
+
+{% endblock %}
+
+<!-- indica al usuario que es incorrecto usuario o contraseña -->
+
+<a href="{% url 'reset_password' %}"></a>
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="form-content">
+            <h1 id="title">FixFast</h1>
+    
+            <form>         
+                    <div class="input-group">
+                    <div class="input-field" id="nameInput">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="username" id="" placeholder="Nombre de Usuario">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password" id="" placeholder="Contraseña">
+                    </div>
+                    
+                    <p>Olvidaste la Contraseña <a href="{% url 'reset_password' %}">click aqui</a></p>
+                    </div>
+                    <div class="btn-field">
+                        <button id="signUp" type="button">Registro</button>
+                        <button id="signIn" type="submit" class="disable">Login</button>
+                    </div>
+                    {% if form.errors %}
+    <p>¡Error de inicio de sesión! Por favor, corrija los siguientes errores:</p>
+    <ul>
+        {% for field, error in form.errors.items %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+                    
+            </form>
+    </div>
+    
+
+   
+    <br>
+    
+    <br>
+    
+    <script src="{% static '../static/css/js/scripts.js' %}"></script>
+
+</form>
+{% endblock %}
