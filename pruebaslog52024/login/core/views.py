@@ -2,7 +2,9 @@ from multiprocessing import AuthenticationError
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.http import JsonResponse
 #parte del formulario 
+from django.contrib.auth.forms import UserModel
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 #librerias para servidor smtp y exchange
@@ -26,6 +28,24 @@ def ticketscerrados(request):
 
 def configuraciondecorreo(request):     
     return render(request, 'core/configuraciondecorreo.html')
+
+def lista_tickets(request):     
+    return render(request, 'core/listaticket.html')
+
+def lista_tickets(request):     
+    return render(request, 'core/editarticket.html') 
+
+def lista_usuarios(request):     
+    return render(request, 'core/lista_usuarios.html')
+
+def editaruser(request):     
+    return render(request, 'core/editaruser.html')
+
+def editaruser(request):     
+    return render(request, 'core/agregaruser.html')
+
+def editaruser(request):     
+    return render(request, 'core/eliminaruser.html')
 
 @login_required
 def products(request):
@@ -82,6 +102,10 @@ def alltickets(request):
     tickets = Ticket.objects.all()
     return render(request, 'core/alltickets.html', {'tickets': tickets})
 
+
+
+
+
 # logica para cerrar el Ticket
 
 from django.shortcuts import get_object_or_404, redirect
@@ -96,6 +120,60 @@ def cerrar_ticket(request, ticket_id):
 def all_closed_tickets(request):
     closed_tickets = Ticket.objects.filter(closed=True)
     return render(request, 'ticketscerrados.html', {'closed_tickets': closed_tickets})
+
+from django.shortcuts import get_object_or_404, redirect
+from .models import Ticket
+
+def listatickets(request):
+    tickets = Ticket.objects.all()  # Obtén todos los objetos de la tabla ticket
+    return render(request, 'listaticket.html', {'tickets': tickets})
+
+
+#editar tickets
+from django.shortcuts import get_object_or_404, redirect
+from .models import Ticket
+
+def editarticket(request, ticket_id):
+    ticket = get_object_or_404(Ticket, pk=ticket_id)
+    if request.method == 'POST':
+        ticket.id = request.POST['id']
+        ticket.title = request.POST['title']
+        ticket.description = request.POST['description']
+        ticket.save()
+        return redirect('listatickets')
+    return render(request, 'editarticket.html', {'ticket': Ticket})
+
+#-----------------------
+#-------------------
+
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.models import User
+
+def lista_usuarios(request):
+    usuarios = User.objects.all()  # Captura todos los usuarios de la base de datos
+    return render(request, 'core/lista_usuarios.html', {'usuarios': usuarios})
+
+def agregaruser(request):
+    return redirect('home')
+
+
+def eliminaruser(request, user_id):
+    usuarios = get_object_or_404(User, id=user_id)
+    usuarios.delete()
+    return redirect('listuser')
+
+def editaruser(request, user_id):
+    usuarios = get_object_or_404(User, pk=user_id)
+    if request.method == 'POST':
+        usuarios.username = request.POST['username']
+        usuarios.last_name = request.POST['last_name']
+        usuarios.email = request.POST['email']
+        usuarios.save()
+        return redirect('listuser')
+    return render(request, 'editaruser.html', {'usuarios': usuarios})
+
+
+#-----------------------
 
 #logica de la vista para procesar los correos
 from django.shortcuts import render, redirect

@@ -1,0 +1,18 @@
+<!-- templates/core/editar_usuario.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Usuario</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Editar Usuario</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-save">Guardar Cambios</button>
+        <a href="{% url 'listauser' %}" class="btn btn-cancel">Cancelar</a>
+    </form>
+</body>
+</html>

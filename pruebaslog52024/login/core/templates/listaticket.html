@@ -1,0 +1,66 @@
+<!-- templates/lista_productos.html 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de tickets</title>
+</head>
+<body>
+    <h1>Lista de tickets</h1>
+    <div class="ticket-id">Ticket No. {{ticket.id}}</div>
+    <table border="1">
+        <tr>
+            <th>title</th>
+            <th>status</th>
+            <th>description</th>
+        </tr>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ ticket.title }}</td>
+            
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.description }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/kk.css">
+    <title>All2 Tickets</title>
+</head>
+<body>
+
+    <li><a href={% url 'home' %}>Inicio</a></li>
+
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>title</th>
+        <th>description</th>
+    </tr>
+    {% for ticket in tickets %}
+    <tr>
+    
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.title }}</td>
+        <td>{{ ticket.description }}</td>
+
+        <td>
+            <a href="{% url 'editarticket' ticket.id %}" class="btn btn-edit">Editar</a>
+            <a class="btn btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">Eliminar</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+   
+</body>
+</html>

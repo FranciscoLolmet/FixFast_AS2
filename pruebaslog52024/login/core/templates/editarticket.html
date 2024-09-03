@@ -1,0 +1,22 @@
+<!-- templates/editar_producto.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Producto</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Editar Ticket</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="id">Id:</label>
+        <input type="text" id="id" name="id" value="{{ tikcet.id }}"><br><br>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{ ticket.title }}"><br><br>
+        <label for="descripcion">Descripción:</label>
+        <textarea id="description" name="description">{{ ticket.description }}</textarea><br><br>
+        <button type="submit">Guardar cambios</button>
+    </form>
+</body>
+</html>

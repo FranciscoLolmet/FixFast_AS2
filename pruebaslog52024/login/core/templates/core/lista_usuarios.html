@@ -1,0 +1,36 @@
+<!-- templates/core/lista_usuarios.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Usuarios2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/kk.css">
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <li><a href={% url 'home' %}>Inicio</a></li>
+        <table>
+        <tr>
+            <th>username</th>
+            <th>last_name</th>
+            <th>email</th>
+        </tr>
+        {% for user in usuarios %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <!-- Enlace para editar el usuario -->
+                <a href="{% url 'agregaruser' %}" class="btn btn-agregar">Agregar</a>
+                <a href="{% url 'editaruser' user.id %}" class="btn btn-edit">Editar</a>
+                <a href="{% url 'eliminaruser' user.id %}" class="btn btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">Eliminar</a>
+                
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
