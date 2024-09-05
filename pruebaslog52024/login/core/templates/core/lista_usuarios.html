@@ -9,28 +9,34 @@
 </head>
 <body>
     <h1>Lista de Usuarios</h1>
-    <li><a href={% url 'home' %}>Inicio</a></li>
+    <li><a href="{% url 'products' %}">Inicio</a></li>
+    
         <table>
         <tr>
+            <th>id</th>
             <th>username</th>
             <th>last_name</th>
             <th>email</th>
         </tr>
         {% for user in usuarios %}
         <tr>
+            <td>{{ user.id }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.last_name }}</td>
             <td>{{ user.email }}</td>
             <td>
                 <!-- Enlace para editar el usuario -->
-                <a href="{% url 'agregaruser' %}" class="btn btn-agregar">Agregar</a>
+                
                 <a href="{% url 'editaruser' user.id %}" class="btn btn-edit">Editar</a>
-                <a href="{% url 'eliminaruser' user.id %}" class="btn btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">Eliminar</a>
+                
+                <a href="{% url 'eliminaruser' user.id %}" class="btn btn-delete" 
+                   onclick="return confirm('¿Estás seguro de que deseas eliminar este Usuario?');">Eliminar</a>
                 
             </td>
 
         </tr>
         {% endfor %}
     </table>
+    
 </body>
 </html>

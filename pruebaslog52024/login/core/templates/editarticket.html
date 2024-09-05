@@ -2,11 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Editar Producto</title>
+    <title>Editar Ticket</title>
+    
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'editartickets.css' %}">
+    
 </head>
+
 <body>
+    <div class="form-container">
     <h1>Editar Ticket</h1>
     <form method="post">
         {% csrf_token %}
@@ -17,6 +21,8 @@
         <label for="descripcion">Descripción:</label>
         <textarea id="description" name="description">{{ ticket.description }}</textarea><br><br>
         <button type="submit">Guardar cambios</button>
+        <a href="{% url 'listatickets' %}" class="btn btn-cancel">Cancelar</a>
     </form>
+</div>
 </body>
 </html>

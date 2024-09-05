@@ -1,18 +1,33 @@
-<!-- templates/core/editar_usuario.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Editar Usuario</title>
+    
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'editartickets.css' %}">
+    
 </head>
+
 <body>
+    <div class="form-container">
     <h1>Editar Usuario</h1>
-    <form method="POST">
+    <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-save">Guardar Cambios</button>
+        <label for="id">Id:</label>
+        <input type="text" id="id" name="id" value="{{ user.id }}"><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="{{ user.username }}"><br><br>
+
+        <label for="last_name">Last_name:</label>
+        <input type= "text" id="last_name" name="last_name" value="{{ user.last_name }}"><br><br>
+
+        <label for="email">email:</label>
+        <input type= "text" id="email" name="email" value="{{ user.email }}"><br><br>
+
+        <button type="submit">Guardar cambios</button>
         <a href="{% url 'listauser' %}" class="btn btn-cancel">Cancelar</a>
     </form>
+</div>
 </body>
 </html>
