@@ -192,7 +192,7 @@ from django.contrib import messages
 
 def eliminaruser(request, user_id):
     # Obtener el producto o devolver un 404 si no existe
-    usuarios = get_object_or_404(Ticket, id=user_id)
+    usuarios = get_object_or_404(User, id=user_id)
 
     # Eliminar el producto
     usuarios.delete()
