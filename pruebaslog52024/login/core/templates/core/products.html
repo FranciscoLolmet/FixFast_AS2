@@ -13,7 +13,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>FixFast</title>
+    <title>FixFast </title>
     
     <!-- Iconos -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
@@ -31,7 +31,10 @@
         <div class="header-right">
           <span class="material-icons-outlined">notifications</span>
           <span class="material-icons-outlined">email</span>
-          <span class="material-icons-outlined">account_circle</span>
+          <a href="{% url 'perfil' %}">
+            <span class="material-icons-outlined">account_circle</span>
+          </a>
+          
         </div>
       </header>
       <aside id="sidebar">

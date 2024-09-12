@@ -1,9 +1,9 @@
 from django.urls import path, include
-from .views import home, products, exit, creaciondeticket, alltickets, configuracion, ticketscerrados, configuraciondecorreo
+from .views import home, products, exit, creaciondeticket, alltickets, configuracion, ticketscerrados, configuraciondecorreo, change_password
 from django.conf import settings
 from django.conf.urls.static import static
 #formulario 
-from .views import register, products, listatickets, editarticket, lista_usuarios,eliminaruser,editaruser, agregaruser, eliminarticket
+from .views import register, products, listatickets, editarticket, lista_usuarios,eliminaruser,editaruser, agregaruser, eliminarticket,perfil
 #reestablecimiento de contraseña
 from django.contrib.auth import views as auth_views
 from . import views
@@ -35,6 +35,8 @@ urlpatterns = [
    path('editaruser/<int:user_id>/', editaruser, name='editaruser'),
    path('agregaruser/<int:user_id>/', agregaruser, name='agregaruser'),
    path('listauser/', lista_usuarios, name='listauser'),
+   path('change_password/', change_password, name='change_password'),
+   path('perfil/', perfil, name='perfil'),
    path('configuraciondecorreo/', configuraciondecorreo, name='configuraciondecorreo'),#pagina para configurar correo pop3
    path('configuracion-correo/', views.configurar_correo, name='configuracion_correo')
    

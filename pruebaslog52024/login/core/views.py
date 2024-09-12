@@ -5,7 +5,7 @@ from django.contrib.auth import logout
 from django.http import JsonResponse
 #parte del formulario 
 from django.contrib.auth.forms import UserModel
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm , PasswordChangeForm 
 from django.contrib.auth import login, authenticate
 #librerias para servidor smtp y exchange
 from datetime import datetime, timedelta
@@ -70,6 +70,40 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+##################CAMBIAR CONTRASEÑA
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['new_password1'])
+            user.save()
+            
+            # Autenticar nuevamente al usuario
+            username = request.user.username
+            password = form.cleaned_data['new_password1']
+            user = authenticate(username=username, password=password)
+            
+            if user is not None:
+                login(request, user)  # Iniciar sesión de nuevo con la nueva contraseña
+                messages.success(request, 'Your password has been successfully changed!')
+                return redirect('/accounts/login/')  # Redirigir a la página de perfil o a donde prefieras
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(user=request.user)
+
+    return render(request, 'change_password.html', {'form': form})
+
+
 #para devolver error si ingresa mal usuario y contraseña 
 def login_view(request):
     if request.method == 'POST':
@@ -129,6 +163,8 @@ def listatickets(request):
     return render(request, 'listaticket.html', {'tickets': tickets})
 
 
+
+
 #editar tickets
 from django.shortcuts import get_object_or_404, redirect
 from .models import Ticket
@@ -173,6 +209,11 @@ from django.contrib.auth.models import User
 def lista_usuarios(request):
     usuarios = User.objects.all()  # Captura todos los usuarios de la base de datos
     return render(request, 'core/lista_usuarios.html', {'usuarios': usuarios})
+
+########################################################PERFIL
+def perfil(request):
+    usuarios = User.objects.all()  # Captura todos los usuarios de la base de datos
+    return render(request, 'core/perfil.html', {'usuarios': usuarios})
 
 
 from django.shortcuts import render, redirect
